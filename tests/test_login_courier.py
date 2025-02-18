@@ -28,8 +28,8 @@ class TestCourierLogin:
         response = self.login_api.login_courier("", "burnout")
         assert response.status_code == 400
         assert response.json()["message"] == "Недостаточно данных для входа"
-# В данном тесте мы используем неверный логин и пароль
+# В данном тесте мы используем случайно сгенерированные данные и пытаемся войти
     def test_login_invalid_credentials(self):
-        response = self.login_api.login_courier("wrong_login", "wrong_password")
+        response = self.login_api.login_with_random_credentials()
         assert response.status_code == 404
         assert response.json()["message"] == "Учетная запись не найдена"

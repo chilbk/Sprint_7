@@ -14,6 +14,8 @@ class TestCourierAPI:
         first_name = courier_api.generate_random_string()
         response = courier_api.create_courier(login, password, first_name)
         assert response.status_code == 201, f"Ошибка: {response.text}"
+        delete_response = courier_api.delete_courier(login, password)
+        assert delete_response == 200 , f"Ошибка удаления"
 # Создание курьера без логина
     def test_create_courier_missing_login(self, courier_api):
         password = courier_api.generate_random_string()
